@@ -9,6 +9,11 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { MyApp } from './app.component';
 
+import { File } from '@ionic-native/file';
+import { Transfer } from '@ionic-native/transfer';
+import { FilePath } from '@ionic-native/file-path';
+import { Camera } from '@ionic-native/camera';
+
 @NgModule({
   declarations: [
     MyApp
@@ -33,6 +38,10 @@ import { MyApp } from './app.component';
   providers: [
     StatusBar,
     SplashScreen,
+    File,
+    Transfer,
+    FilePath,
+    Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
