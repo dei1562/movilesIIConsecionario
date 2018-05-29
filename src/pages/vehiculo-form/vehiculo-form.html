@@ -1,0 +1,58 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>{{ titulo }}</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+    <ion-item>
+        <ion-label>Marca</ion-label>
+        <ion-input [(ngModel)]="vehiculo.marca"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>Cilindraje</ion-label>
+        <ion-input [(ngModel)]="vehiculo.cilindraje"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>Serial</ion-label>
+        <ion-input [(ngModel)]="vehiculo.serial"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>Color</ion-label>
+        <ion-input [(ngModel)]="vehiculo.color"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>Modelo</ion-label>
+        <ion-input [(ngModel)]="vehiculo.modelo"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>Foto</ion-label>
+    </ion-item>
+    <img [src]="vehiculo.foto" style="width: 50%;" [hidden]="vehiculo.foto == null">
+
+    <button ion-button block clear (click)="addVehiculo(vehiculo)" *ngIf="flagButton === false">Guardar</button>
+    <button ion-button block clear (click)="updateVehiculo(vehiculo)" *ngIf="flagButton === true">Actualizar</button>
+    <button ion-button block clear (click)="removeVehiculo(vehiculo)" *ngIf="flagButton === true">Eliminar</button>
+
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar color="primary">
+        <ion-buttons>
+            <button ion-button icon-left (click)="presentActionSheet()">
+      <ion-icon name="camera"></ion-icon> Seleccionar Imagen
+    </button>
+            <!-- <button ion-button icon-left (click)="uploadImage()" [disabled]="vehiculo.foto === null">
+      <ion-icon name="cloud-upload"></ion-icon> Upload
+    </button> -->
+        </ion-buttons>
+    </ion-toolbar>
+</ion-footer>

@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { MyApp } from './app.component';
 
@@ -13,6 +14,8 @@ import { File } from '@ionic-native/file';
 import { Transfer } from '@ionic-native/transfer';
 import { FilePath } from '@ionic-native/file-path';
 import { Camera } from '@ionic-native/camera';
+
+import { VehiculoListService } from './../service/vehiculo-list.service';
 
 @NgModule({
   declarations: [
@@ -29,11 +32,12 @@ import { Camera } from '@ionic-native/camera';
       storageBucket: "concesionario-e58ea.appspot.com",
       messagingSenderId: "179035316970"
     }),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp  
+    MyApp
   ],
   providers: [
     StatusBar,
@@ -42,7 +46,8 @@ import { Camera } from '@ionic-native/camera';
     Transfer,
     FilePath,
     Camera,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    VehiculoListService
   ]
 })
 export class AppModule {}

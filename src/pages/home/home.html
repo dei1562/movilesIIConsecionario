@@ -1,25 +1,29 @@
 <ion-header>
+    <ion-navbar>
+        <ion-title>
+            Concesionario
+        </ion-title>
 
-    <ion-navbar color="primary">
-        <ion-title>Devdactic Image Upload</ion-title>
+        <ion-buttons end>
+            <button navPush="VehiculoFormPage" ion-button>
+              <ion-icon name="add"></ion-icon>
+          </button>
+        </ion-buttons>
     </ion-navbar>
-
 </ion-header>
 
 <ion-content padding>
-    <img src="{{ pathForImage(lastImage) }}" style="width: 100%" [hidden]="lastImage === null">
-    <h3 [hidden]="lastImage !== null">Please Select Image!</h3>
+    <ion-list>
+        <ion-list-header>Vehiculos</ion-list-header>
+        <ion-item *ngFor="let vehiculo of vehiculoList | async" detail-push navPush="VehiculoFormPage" [navParams]={vehiculo:vehiculo}>
+            <ion-thumbnail item-start>
+                <img [src]="vehiculo.foto" [hidden]="vehiculo.foto == null">
+            </ion-thumbnail>
+            <h1>{{vehiculo.marca}}</h1>
+            <p>Cilindraje: {{vehiculo.cilindraje}}</p>
+            <p>Serial: {{vehiculo.serial}}</p>
+            <p>Color: {{vehiculo.color}}</p>
+            <p>Modelo: {{vehiculo.modelo}}</p>
+        </ion-item>
+    </ion-list>
 </ion-content>
-
-<ion-footer>
-    <ion-toolbar color="primary">
-        <ion-buttons>
-            <button ion-button icon-left (click)="presentActionSheet()">
-        <ion-icon name="camera"></ion-icon> Select Image
-      </button>
-            <button ion-button icon-left (click)="uploadImage()" [disabled]="lastImage === null">
-        <ion-icon name="cloud-upload"></ion-icon> Upload
-      </button>
-        </ion-buttons>
-    </ion-toolbar>
-</ion-footer>
